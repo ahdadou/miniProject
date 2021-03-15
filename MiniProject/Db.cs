@@ -12,16 +12,12 @@ namespace MiniProject
 {
     static class  Db
     {
-        static public string csName;
-        public static string cs;
-        public static SqlCommand cmd;
-        public static SqlConnection cn=new SqlConnection();
-        public static DataSet ds=new DataSet();
-
-
-        public static SqlDataAdapter da;
-
-        public static SqlCommandBuilder cb;
+        static string cs;
+        static public DataSet ds = new DataSet();
+        static SqlConnection cn = new SqlConnection();
+        static SqlDataAdapter da;
+        static SqlCommand cmd;
+        static SqlCommandBuilder comBuild;
 
 
 
@@ -74,6 +70,16 @@ namespace MiniProject
 
 
 
+        //genere ID
+        static public int getId()
+        {
+            int id;
+            Random r = new Random();
+            int i = Math.Abs(r.Next() * 1000);
+            id = Convert.ToInt32(DateTime.Now.ToString("ddmmss")) + i;
+
+            return id;
+        }
 
 
     }

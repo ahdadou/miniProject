@@ -35,9 +35,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
+            this.btnModifier = new System.Windows.Forms.Button();
+            this.btnsupprimer = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -48,6 +48,7 @@
             this.txtNomArab = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblErrorNom = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -89,12 +90,13 @@
             this.btnValide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValide.ForeColor = System.Drawing.Color.White;
-            this.btnValide.Location = new System.Drawing.Point(0, 172);
+            this.btnValide.Location = new System.Drawing.Point(0, 166);
             this.btnValide.Name = "btnValide";
-            this.btnValide.Size = new System.Drawing.Size(140, 35);
+            this.btnValide.Size = new System.Drawing.Size(141, 35);
             this.btnValide.TabIndex = 9;
             this.btnValide.Text = "Valide";
             this.btnValide.UseVisualStyleBackColor = false;
+            this.btnValide.Click += new System.EventHandler(this.btnValide_Click);
             // 
             // btnImprime
             // 
@@ -143,53 +145,54 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Liste des Cycles";
             // 
-            // button1
+            // btnAnnuler
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(181, 172);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 35);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Annuler";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
+            this.btnAnnuler.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAnnuler.FlatAppearance.BorderSize = 0;
+            this.btnAnnuler.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnnuler.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
+            this.btnAnnuler.Location = new System.Drawing.Point(181, 166);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(140, 35);
+            this.btnAnnuler.TabIndex = 12;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
-            // button2
+            // btnModifier
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(619, 324);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 35);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Modifier";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnModifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
+            this.btnModifier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModifier.FlatAppearance.BorderSize = 0;
+            this.btnModifier.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModifier.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifier.ForeColor = System.Drawing.Color.White;
+            this.btnModifier.Location = new System.Drawing.Point(619, 324);
+            this.btnModifier.Name = "btnModifier";
+            this.btnModifier.Size = new System.Drawing.Size(140, 35);
+            this.btnModifier.TabIndex = 13;
+            this.btnModifier.Text = "Modifier";
+            this.btnModifier.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btnsupprimer
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(468, 324);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(140, 35);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Supprimer";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnsupprimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
+            this.btnsupprimer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnsupprimer.FlatAppearance.BorderSize = 0;
+            this.btnsupprimer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnsupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnsupprimer.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsupprimer.ForeColor = System.Drawing.Color.White;
+            this.btnsupprimer.Location = new System.Drawing.Point(468, 324);
+            this.btnsupprimer.Name = "btnsupprimer";
+            this.btnsupprimer.Size = new System.Drawing.Size(140, 35);
+            this.btnsupprimer.TabIndex = 14;
+            this.btnsupprimer.Text = "Supprimer";
+            this.btnsupprimer.UseVisualStyleBackColor = false;
             // 
             // panel3
             // 
@@ -203,6 +206,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.lblErrorNom);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.txtNomArab);
@@ -210,7 +214,7 @@
             this.panel4.Controls.Add(this.panel7);
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.panel5);
-            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.btnAnnuler);
             this.panel4.Controls.Add(this.btnValide);
             this.panel4.Location = new System.Drawing.Point(32, 42);
             this.panel4.Name = "panel4";
@@ -298,14 +302,25 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "Nom en Arabe :";
             // 
+            // lblErrorNom
+            // 
+            this.lblErrorNom.AutoSize = true;
+            this.lblErrorNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorNom.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorNom.Location = new System.Drawing.Point(111, 95);
+            this.lblErrorNom.Name = "lblErrorNom";
+            this.lblErrorNom.Size = new System.Drawing.Size(86, 16);
+            this.lblErrorNom.TabIndex = 16;
+            this.lblErrorNom.Text = "Entrer le nom";
+            // 
             // Cycle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnsupprimer);
+            this.Controls.Add(this.btnModifier);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnImprime);
             this.Controls.Add(this.label4);
@@ -334,9 +349,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.Button btnModifier;
+        private System.Windows.Forms.Button btnsupprimer;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label2;
@@ -346,5 +361,6 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblErrorNom;
     }
 }
