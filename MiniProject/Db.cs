@@ -21,6 +21,7 @@ namespace MiniProject
 
 
 
+
         //Open Connection
         static private void openConnection()
         {
@@ -45,22 +46,73 @@ namespace MiniProject
 
         //Remplire ListBox  without any relation
 
-        static public void RemplissageListeBox(string requet,string table, string display, string value, ref BindingSource bindingSource,ListBox listBox)
+        static public void RemplissageListeBox(string requet,string table, string display, string value, ref BindingSource bindingSource,ListControl listBox,ref SqlDataAdapter dab)
         {
             openConnection();
             cmd = new SqlCommand(requet, cn);
-            da = new SqlDataAdapter(cmd);
+            dab = new SqlDataAdapter(cmd);
+            comBuild = new SqlCommandBuilder(dab);
             try
             {
                 if (ds.Tables[table] != null)
                     ds.Tables[table].Clear();
             }
             catch(Exception ex) { }
-            da.Fill(ds, table);
+            dab.Fill(ds, table);
             bindingSource.DataSource = ds;
             bindingSource.DataMember = table;
 
             listBox.DataSource = bindingSource;
+            listBox.DisplayMember = display;
+            listBox.ValueMember = value;
+        }
+
+        //static public void RemplissageComboBox(string requet, string table, string display, string value, ref BindingSource bindingSource, ComboBox listBox)
+        //{
+        //    openConnection();
+        //    cmd = new SqlCommand(requet, cn);
+        //    da = new SqlDataAdapter(cmd);
+        //    try
+        //    {
+        //        if (ds.Tables[table] != null)
+        //            ds.Tables[table].Clear();
+        //    }
+        //    catch (Exception ex) { }
+        //    da.Fill(ds, table);
+        //    bindingSource.DataSource = ds;
+        //    bindingSource.DataMember = table;
+
+        //    listBox.DataSource = bindingSource;
+        //    listBox.DisplayMember = display;
+        //    listBox.ValueMember = value;
+        //}
+
+
+
+        //Remplire ListBox with  a relation with dropDown Button
+
+        static public void RemplissageListeBoxRelation(string requet, string tablePrimary, string tableForeign,string primaryKey, string display, string value, ref BindingSource bindingSourcePrimary, ref BindingSource bindingSourceForeign, ListBox listBox)
+        {
+            openConnection();
+            cmd = new SqlCommand(requet, cn);
+            da = new SqlDataAdapter(cmd);
+            try
+            {
+                if (ds.Tables[tableForeign] != null)
+                    ds.Tables[tableForeign].Clear();
+            }
+            catch (Exception ex) { }
+            da.Fill(ds, tableForeign);
+
+            DataColumn c1 = ds.Tables[tablePrimary].Columns[primaryKey];
+            DataColumn c2 = ds.Tables[tableForeign].Columns[primaryKey];
+            DataRelation r = new DataRelation("FK_" + tablePrimary + "_" + tableForeign,c1, c2);
+            ds.Relations.Add(r);
+
+            bindingSourceForeign.DataSource = bindingSourcePrimary;
+            bindingSourceForeign.DataMember = "FK_" + tablePrimary + "_" + tableForeign;
+
+            listBox.DataSource = bindingSourceForeign;
             listBox.DisplayMember = display;
             listBox.ValueMember = value;
         }

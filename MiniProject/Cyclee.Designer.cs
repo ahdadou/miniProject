@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cyclee));
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnAjouter = new System.Windows.Forms.Button();
             this.lblErrorNom = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValide = new System.Windows.Forms.Button();
             this.btnsupprimer = new System.Windows.Forms.Button();
@@ -44,11 +45,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.txtNom = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.txtNomArab = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.txtNomarab = new System.Windows.Forms.TextBox();
+            this.txtid = new System.Windows.Forms.TextBox();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -58,7 +59,11 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.txtNomArab);
+            this.panel4.Controls.Add(this.btnAjouter);
+            this.panel4.Controls.Add(this.txtid);
+            this.panel4.Controls.Add(this.panel7);
+            this.panel4.Controls.Add(this.txtNomarab);
+            this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.txtNom);
             this.panel4.Controls.Add(this.lblErrorNom);
             this.panel4.Controls.Add(this.label7);
@@ -70,6 +75,24 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(321, 356);
             this.panel4.TabIndex = 21;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            // 
+            // btnAjouter
+            // 
+            this.btnAjouter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
+            this.btnAjouter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAjouter.FlatAppearance.BorderSize = 0;
+            this.btnAjouter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAjouter.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAjouter.ForeColor = System.Drawing.Color.White;
+            this.btnAjouter.Location = new System.Drawing.Point(0, 170);
+            this.btnAjouter.Name = "btnAjouter";
+            this.btnAjouter.Size = new System.Drawing.Size(321, 35);
+            this.btnAjouter.TabIndex = 24;
+            this.btnAjouter.Text = "Ajouter";
+            this.btnAjouter.UseVisualStyleBackColor = false;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // lblErrorNom
             // 
@@ -116,6 +139,16 @@
             this.panel5.Size = new System.Drawing.Size(321, 48);
             this.panel5.TabIndex = 16;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(88, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 20);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Ajoute de Cycle";
+            // 
             // btnAnnuler
             // 
             this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
@@ -125,7 +158,7 @@
             this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnuler.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnuler.ForeColor = System.Drawing.Color.White;
-            this.btnAnnuler.Location = new System.Drawing.Point(181, 166);
+            this.btnAnnuler.Location = new System.Drawing.Point(181, 211);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(140, 35);
             this.btnAnnuler.TabIndex = 12;
@@ -142,7 +175,7 @@
             this.btnValide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnValide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnValide.ForeColor = System.Drawing.Color.White;
-            this.btnValide.Location = new System.Drawing.Point(0, 166);
+            this.btnValide.Location = new System.Drawing.Point(0, 211);
             this.btnValide.Name = "btnValide";
             this.btnValide.Size = new System.Drawing.Size(141, 35);
             this.btnValide.TabIndex = 9;
@@ -249,76 +282,51 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Gestion des Cycles";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(88, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 20);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Ajoute de Cycle";
-            // 
-            // printPreviewDialog1
-            // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Document = this.printDocument1;
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
             // txtNom
             // 
-            this.txtNom.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.txtNom.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtNom.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtNom.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNom.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtNom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNom.HintForeColor = System.Drawing.Color.Empty;
-            this.txtNom.HintText = "";
-            this.txtNom.isPassword = false;
-            this.txtNom.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
-            this.txtNom.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtNom.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
-            this.txtNom.LineThickness = 3;
-            this.txtNom.Location = new System.Drawing.Point(114, 58);
-            this.txtNom.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNom.MaxLength = 32767;
+            this.txtNom.BackColor = System.Drawing.SystemColors.Control;
+            this.txtNom.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNom.Location = new System.Drawing.Point(111, 67);
+            this.txtNom.Multiline = true;
             this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(207, 33);
+            this.txtNom.Size = new System.Drawing.Size(207, 25);
             this.txtNom.TabIndex = 22;
-            this.txtNom.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // txtNomArab
+            // panel6
             // 
-            this.txtNomArab.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.txtNomArab.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtNomArab.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtNomArab.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNomArab.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtNomArab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNomArab.HintForeColor = System.Drawing.Color.Empty;
-            this.txtNomArab.HintText = "";
-            this.txtNomArab.isPassword = false;
-            this.txtNomArab.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
-            this.txtNomArab.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtNomArab.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
-            this.txtNomArab.LineThickness = 3;
-            this.txtNomArab.Location = new System.Drawing.Point(114, 115);
-            this.txtNomArab.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNomArab.MaxLength = 32767;
-            this.txtNomArab.Name = "txtNomArab";
-            this.txtNomArab.Size = new System.Drawing.Size(207, 33);
-            this.txtNomArab.TabIndex = 23;
-            this.txtNomArab.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel6.Location = new System.Drawing.Point(111, 91);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(207, 1);
+            this.panel6.TabIndex = 23;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel7.Location = new System.Drawing.Point(114, 143);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(207, 1);
+            this.panel7.TabIndex = 26;
+            // 
+            // txtNomarab
+            // 
+            this.txtNomarab.BackColor = System.Drawing.SystemColors.Control;
+            this.txtNomarab.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNomarab.Location = new System.Drawing.Point(114, 119);
+            this.txtNomarab.Multiline = true;
+            this.txtNomarab.Name = "txtNomarab";
+            this.txtNomarab.Size = new System.Drawing.Size(207, 25);
+            this.txtNomarab.TabIndex = 25;
+            // 
+            // txtid
+            // 
+            this.txtid.BackColor = System.Drawing.SystemColors.Control;
+            this.txtid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtid.Location = new System.Drawing.Point(190, 179);
+            this.txtid.Multiline = true;
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(105, 10);
+            this.txtid.TabIndex = 27;
             // 
             // Cyclee
             // 
@@ -363,9 +371,11 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-        private System.Drawing.Printing.PrintDocument printDocument1;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox txtNom;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox txtNomArab;
+        private System.Windows.Forms.Button btnAjouter;
+        private System.Windows.Forms.TextBox txtNom;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.TextBox txtNomarab;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TextBox txtid;
     }
 }

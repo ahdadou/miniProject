@@ -32,10 +32,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lstBoxCycle = new System.Windows.Forms.ListBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btnsupprimer = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
+            this.btnsupprimer = new System.Windows.Forms.Button();
+            this.lstBoxCycle = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnValide = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
@@ -48,11 +48,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblErrorNom = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.drpCycle = new Bunifu.Framework.UI.BunifuDropdown();
             this.lblErrorCode = new System.Windows.Forms.Label();
             this.txtCode = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.btncycle = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -104,20 +104,6 @@
             this.panel3.Size = new System.Drawing.Size(291, 308);
             this.panel3.TabIndex = 8;
             // 
-            // lstBoxCycle
-            // 
-            this.lstBoxCycle.BackColor = System.Drawing.Color.White;
-            this.lstBoxCycle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lstBoxCycle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstBoxCycle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstBoxCycle.ForeColor = System.Drawing.Color.Black;
-            this.lstBoxCycle.FormattingEnabled = true;
-            this.lstBoxCycle.ItemHeight = 18;
-            this.lstBoxCycle.Location = new System.Drawing.Point(0, 0);
-            this.lstBoxCycle.Name = "lstBoxCycle";
-            this.lstBoxCycle.Size = new System.Drawing.Size(291, 308);
-            this.lstBoxCycle.TabIndex = 6;
-            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btnModifier);
@@ -127,6 +113,22 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(291, 41);
             this.panel6.TabIndex = 7;
+            // 
+            // btnModifier
+            // 
+            this.btnModifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
+            this.btnModifier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModifier.FlatAppearance.BorderSize = 0;
+            this.btnModifier.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModifier.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifier.ForeColor = System.Drawing.Color.White;
+            this.btnModifier.Location = new System.Drawing.Point(0, 0);
+            this.btnModifier.Name = "btnModifier";
+            this.btnModifier.Size = new System.Drawing.Size(140, 41);
+            this.btnModifier.TabIndex = 25;
+            this.btnModifier.Text = "Modifier";
+            this.btnModifier.UseVisualStyleBackColor = false;
             // 
             // btnsupprimer
             // 
@@ -144,21 +146,19 @@
             this.btnsupprimer.Text = "Supprimer";
             this.btnsupprimer.UseVisualStyleBackColor = false;
             // 
-            // btnModifier
+            // lstBoxCycle
             // 
-            this.btnModifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
-            this.btnModifier.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnModifier.FlatAppearance.BorderSize = 0;
-            this.btnModifier.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModifier.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModifier.ForeColor = System.Drawing.Color.White;
-            this.btnModifier.Location = new System.Drawing.Point(0, 0);
-            this.btnModifier.Name = "btnModifier";
-            this.btnModifier.Size = new System.Drawing.Size(140, 41);
-            this.btnModifier.TabIndex = 25;
-            this.btnModifier.Text = "Modifier";
-            this.btnModifier.UseVisualStyleBackColor = false;
+            this.lstBoxCycle.BackColor = System.Drawing.Color.White;
+            this.lstBoxCycle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstBoxCycle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstBoxCycle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstBoxCycle.ForeColor = System.Drawing.Color.Black;
+            this.lstBoxCycle.FormattingEnabled = true;
+            this.lstBoxCycle.ItemHeight = 18;
+            this.lstBoxCycle.Location = new System.Drawing.Point(0, 0);
+            this.lstBoxCycle.Name = "lstBoxCycle";
+            this.lstBoxCycle.Size = new System.Drawing.Size(291, 308);
+            this.lstBoxCycle.TabIndex = 6;
             // 
             // panel1
             // 
@@ -324,21 +324,6 @@
             this.label1.TabIndex = 24;
             this.label1.Text = "Cycle  :";
             // 
-            // drpCycle
-            // 
-            this.drpCycle.BackColor = System.Drawing.Color.Transparent;
-            this.drpCycle.BorderRadius = 3;
-            this.drpCycle.DisabledColor = System.Drawing.Color.Gray;
-            this.drpCycle.ForeColor = System.Drawing.Color.White;
-            this.drpCycle.items = new string[0];
-            this.drpCycle.Location = new System.Drawing.Point(113, 76);
-            this.drpCycle.Name = "drpCycle";
-            this.drpCycle.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(76)))), ((int)(((byte)(121)))));
-            this.drpCycle.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.drpCycle.selectedIndex = -1;
-            this.drpCycle.Size = new System.Drawing.Size(155, 35);
-            this.drpCycle.TabIndex = 28;
-            // 
             // lblErrorCode
             // 
             this.lblErrorCode.AutoSize = true;
@@ -391,10 +376,10 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.comboBox1);
             this.panel4.Controls.Add(this.btncycle);
             this.panel4.Controls.Add(this.txtCode);
             this.panel4.Controls.Add(this.lblErrorCode);
-            this.panel4.Controls.Add(this.drpCycle);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.lblErrorNom);
             this.panel4.Controls.Add(this.label8);
@@ -409,6 +394,14 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(321, 356);
             this.panel4.TabIndex = 27;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(110, 85);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(158, 21);
+            this.comboBox1.TabIndex = 28;
             // 
             // Branches
             // 
@@ -455,10 +448,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblErrorNom;
         private System.Windows.Forms.Label label1;
-        private Bunifu.Framework.UI.BunifuDropdown drpCycle;
         private System.Windows.Forms.Label lblErrorCode;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtCode;
         private System.Windows.Forms.Button btncycle;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

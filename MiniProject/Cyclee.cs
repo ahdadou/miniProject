@@ -15,8 +15,9 @@ namespace MiniProject
 {
     public partial class Cyclee : UserControl
     {
-        string id = "";
+        //string id = "";
         BindingSource bs = new BindingSource();
+        SqlDataAdapter da;
 
         public Cyclee()
         {
@@ -25,53 +26,60 @@ namespace MiniProject
 
         private void Cyclee_Load(object sender, EventArgs e)
         {
-            Db.RemplissageListeBox("select * from cycle", "cycle", "nomCycle", "idCycle", ref bs, lstBoxCycle);
+            active(false);
+            Db.RemplissageListeBox("select * from cycle", "cycle", "nomCycle", "idCycle", ref bs, lstBoxCycle, ref da);
             lblErrorNom.Visible = false;
-            //active(false);
+            txtid.DataBindings.Add("text", bs, "idCycle");
+            txtNom.DataBindings.Add("text", bs, "NomCycle");
+            txtNomarab.DataBindings.Add("Text", bs, "NomCycleArabe");
+
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
+            active(false);
             vide();
+            bs.CancelEdit();
 
         }
 
         private void btnValide_Click(object sender, EventArgs e)
         {
-            //active(false);
 
             if (txtNom.Text != "")
             {
-                string cs = ConfigurationManager.ConnectionStrings["ecoleConnectionString"].ConnectionString;
-                SqlConnection cn = new SqlConnection(cs);
-                cn.Open();
+                //string cs = ConfigurationManager.ConnectionStrings["ecoleConnectionString"].ConnectionString;
+                //SqlConnection cn = new SqlConnection(cs);
+                //cn.Open();
 
-                if (id == "")
-                {
-                    string req = "insert into cycle values(@id,@nom,@nomArab)";
-                    SqlCommand com = new SqlCommand(req, cn);
-                    com.Parameters.Add(new SqlParameter("@id", Db.getId()));
-                    com.Parameters.Add(new SqlParameter("@nom", txtNom.Text));
-                    com.Parameters.Add(new SqlParameter("@nomArab", txtNomArab.Text));
-                    var dr = com.ExecuteScalar();
-                    dr = null;
-                    com = null;
-                }
-                else
-                {
-                    string req = "update cycle set nomCycle=@nom,nomCycleArabe=@nomArab where idCycle=@id";
-                    SqlCommand com = new SqlCommand(req, cn);
-                    com.Parameters.Add(new SqlParameter("@id", id));
-                    com.Parameters.Add(new SqlParameter("@nom", txtNom.Text));
-                    com.Parameters.Add(new SqlParameter("@nomArab", txtNomArab.Text));
-                    var dr = com.ExecuteScalar();
-                    dr = null;
-                    com = null;
-                    id = "";
-                }
+                //if (id == "")
+                //{
+                //    string req = "insert into cycle values(@id,@nom,@nomArab)";
+                //    SqlCommand com = new SqlCommand(req, cn);
+                //    com.Parameters.Add(new SqlParameter("@id", Db.getId()));
+                //    com.Parameters.Add(new SqlParameter("@nom", txtNom.Text));
+                //    com.Parameters.Add(new SqlParameter("@nomArab", txtNomArab.Text));
+                //    var dr = com.ExecuteScalar();
+                //    dr = null;
+                //    com = null;
+                //}
+                //else
+                //{
+                //    string req = "update cycle set nomCycle=@nom,nomCycleArabe=@nomArab where idCycle=@id";
+                //    SqlCommand com = new SqlCommand(req, cn);
+                //    com.Parameters.Add(new SqlParameter("@id", id));
+                //    com.Parameters.Add(new SqlParameter("@nom", txtNom.Text));
+                //    com.Parameters.Add(new SqlParameter("@nomArab", txtNomArab.Text));
+                //    var dr = com.ExecuteScalar();
+                //    dr = null;
+                //    com = null;
+                //    id = "";
+                //}
 
-                Db.RemplissageListeBox("select * from cycle", "cycle", "nomCycle", "idCycle", ref bs, lstBoxCycle);
+                this.bs.EndEdit();
+                this.da.Update(Db.ds,"Cycle");            
                 vide();
+                active(false);
 
             }
             else
@@ -99,7 +107,7 @@ namespace MiniProject
                     dr = null;
                     com = null;
 
-                    Db.RemplissageListeBox("select * from cycle", "cycle", "nomCycle", "idCycle", ref bs, lstBoxCycle);
+                    Db.RemplissageListeBox("select * from cycle", "cycle", "nomCycle", "idCycle", ref bs, lstBoxCycle,ref da);
                 }
                 else
                 {
@@ -109,45 +117,63 @@ namespace MiniProject
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
+            active(true);
             string cs = ConfigurationManager.ConnectionStrings["ecoleConnectionString"].ConnectionString;
 
-            SqlConnection cn = new SqlConnection(cs);
-            cn.Open();
-            SqlCommand cmd = new SqlCommand("select * from cycle where idCycle=@id", cn);
-            cmd.Parameters.Add(new SqlParameter("@id", lstBoxCycle.SelectedValue));
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                txtNom.Text = dr["nomCycle"].ToString();
-                txtNomArab.Text = dr["nomCyclearabe"].ToString();
-                id = dr["idCycle"].ToString();
-            }
-            // dr.Close();
-            dr = null;
-            cmd = null;
+            //SqlConnection cn = new SqlConnection(cs);
+            //cn.Open();
+            //SqlCommand cmd = new SqlCommand("select * from cycle where idCycle=@id", cn);
+            //cmd.Parameters.Add(new SqlParameter("@id", lstBoxCycle.SelectedValue));
+            //SqlDataReader dr = cmd.ExecuteReader();
+            //if (dr.Read())
+            //{
+            //    txtNom.Text = dr["nomCycle"].ToString();
+            //    txtNomArab.Text = dr["nomCyclearabe"].ToString();
+            //    id = dr["idCycle"].ToString();
+            //}
+            //// dr.Close();
+            //dr = null;
+            //cmd = null;
         }
 
-        Bitmap map;
         private void btnImprime_Click(object sender, EventArgs e)
         {
-            //Graphics g = this.CreateGraphics();
-            //map = new Bitmap(this.Size.Width, this.Size.Height, g);
-            //Graphics mg = Graphics.FromImage(map);
-            //mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
-            //printPreviewDialog1.ShowDialog();
-            //DGVPrinter printer = new DGVPrinter();
+           
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawImage(map, 0, 0);
         }
 
         private void vide()
         {
-            txtNom.Text = "";
-            txtNomArab.Text = "";
+            
             lblErrorNom.Visible = false;
+        }
+
+
+        private void active(bool v)
+        {
+            btnAnnuler.Enabled = v;
+            btnValide.Enabled = v;
+
+            lstBoxCycle.Enabled = !v;
+            btnsupprimer.Enabled = !v;
+            btnModifier.Enabled = !v;
+            btnAjouter.Enabled = !v;
+
+        }
+
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            active(true);
+            this.bs.AddNew();
+            txtid.Text = Db.getId().ToString();
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

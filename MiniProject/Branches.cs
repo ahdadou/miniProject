@@ -12,7 +12,8 @@ namespace MiniProject
     public partial class Branches : UserControl
     {
         string id = "";
-        BindingSource bs = new BindingSource();
+        BindingSource bsP = new BindingSource();
+        BindingSource bsF = new BindingSource();
         public Branches()
         {
             InitializeComponent();
@@ -20,7 +21,8 @@ namespace MiniProject
 
         private void Branches_Load(object sender, EventArgs e)
         {
-           
+            //Db.RemplissageListeBox("select * from Cycle", "Cycle", "nomCycle", "idCycle", ref bsP, comboBox1);
+            //Db.RemplissageListeBoxRelation("select * from branche", "Cycle", "branche", "idCycle", "nomBrance", "idBranche", ref bsP, ref bsF, lstBoxCycle);
         }
 
         private void bunifuCustomDataGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
