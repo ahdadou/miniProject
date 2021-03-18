@@ -107,7 +107,7 @@ namespace MiniProject
             //dgvNiveau.Rows[dgvNiveau.Rows.Count - 1].Cells[0].Selected = false;
             //dgvNiveau.Rows[dgvNiveau.Rows.Count - 1].Cells[1].Selected = true;
             bsN.AddNew();
-            dgvNiveau.Rows[dgvNiveau.Rows.Count - 2].Cells[0].Value=Db.getId();
+            dgvNiveau.CurrentRow.Cells[0].Value = Db.getId();
 
 
 
@@ -117,6 +117,10 @@ namespace MiniProject
         {
             active(false);
             bsN.CancelEdit();
+            if(!update)
+            dgvNiveau.Rows.RemoveAt(dgvNiveau.CurrentRow.Index);
+            update = false;
+
 
         }
 
@@ -198,6 +202,16 @@ namespace MiniProject
 
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            rptListNiveau r = new rptListNiveau();
+            r.SetDatabaseLogon("sa", "31325653");
+            //r.DatasourceConnection[0].IntegratedSecurity = true;
+            //r.DataSourceConnections[0].SetConnection("desktop-opq5k4o", "Ecoguide", true);
+            FrmImpression f = new FrmImpression(r);
+            f.ShowDialog();
         }
     }
 }

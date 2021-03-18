@@ -191,5 +191,15 @@ namespace MiniProject
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+             RptListCycle r = new RptListCycle();
+             r.SetDatabaseLogon("sa", "31325653");
+            //r.DatasourceConnection[0].IntegratedSecurity = true;
+            //r.DataSourceConnections[0].SetConnection("desktop-opq5k4o", "Ecoguide", true);
+            FrmImpression f = new FrmImpression(r);
+            f.ShowDialog();
+        }
     }
 }

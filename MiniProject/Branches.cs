@@ -108,13 +108,13 @@ namespace MiniProject
 
         private void active(bool v)
         {
-            btnAnnuler.Enabled = v;
-            btnValide.Enabled = v;  
+            btnAnnuler.Visible = v;
+            btnValide.Visible = v;  
 
             lstBoxBranche.Enabled = !v;
             btnsupprimer.Enabled = !v;
             btnModifier.Enabled = !v;
-            btnAjouter.Enabled = !v;
+            btnAjouter.Visible = !v;
             comboBox1.Enabled = !v;
 
         }
@@ -216,6 +216,16 @@ namespace MiniProject
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            rptListBranche r = new rptListBranche();
+            r.SetDatabaseLogon("sa", "31325653");
+            //r.DatasourceConnection[0].IntegratedSecurity = true;
+            //r.DataSourceConnections[0].SetConnection("desktop-opq5k4o", "Ecoguide", true);
+            FrmImpression f = new FrmImpression(r);
+            f.ShowDialog();
         }
     }
 }

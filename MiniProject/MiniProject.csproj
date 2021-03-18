@@ -11,9 +11,24 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -32,6 +47,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Bunifu.UI.WinForm.BunifuShadowPanel">
       <HintPath>..\..\..\..\..\..\Bunifu_UI_WinForms_1.11.5.1\Bunifu.UI.WinForm.BunifuShadowPanel.dll</HintPath>
     </Reference>
@@ -44,6 +60,10 @@
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\..\..\..\..\Bunifu_UI_WinForms_1.11.5.1\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net40\FontAwesome.Sharp.dll</HintPath>
     </Reference>
@@ -55,6 +75,8 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -104,6 +126,12 @@
     <Compile Include="FormCycle.Designer.cs">
       <DependentUpon>FormCycle.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmImpression.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmImpression.Designer.cs">
+      <DependentUpon>FrmImpression.cs</DependentUpon>
+    </Compile>
     <Compile Include="Niveau.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,6 +152,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rptListBranche.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptListBranche.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptListCycle.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptListCycle.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="rptListNiveau.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptListNiveau.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Scolarite.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -148,6 +193,9 @@
     <EmbeddedResource Include="FormCycle.resx">
       <DependentUpon>FormCycle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmImpression.resx">
+      <DependentUpon>FrmImpression.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Niveau.resx">
       <DependentUpon>Niveau.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +215,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="rptListBranche.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptListBranche.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptListCycle.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptListCycle.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptListNiveau.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptListNiveau.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Scolarite.resx">
       <DependentUpon>Scolarite.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,6 +289,16 @@
     <None Include="Resources\school %281%29.png" />
     <None Include="Resources\school.png" />
     <None Include="Resources\loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
